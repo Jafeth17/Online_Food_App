@@ -1,9 +1,46 @@
-import React from 'react';
+import React, {useState,useReducer, useEffect} from 'react';
 import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+
+import * as Location from 'expo-location'
 
 const screenWidth = Dimensions.get('screen').width
 
 export const LandingScreen = () => {
+
+    const [errorMsg, setErrorMsg] = useState("")
+    const [address, setAddress] = useState<Location.LocationGeocodedAddress>()
+
+    const [displayAddress, setDisplayAddress] = useState("Esperando ubicacion")
+
+    useEffect(() => {
+        ( async ()=>{
+
+            let {status} = await Location.requestForegroundPermissionsAsync();
+
+            if( status !== 'granted'){
+                setErrorMsg('Permiso para acceder a la ubicacion denegado')
+            }
+
+            let location: any = await Location.getCurrentPositionAsync({});
+
+            const {coords} = location
+
+            if(coords){
+                const {latitude, longitude} = coords;
+
+                let addressResponse: any = await Location.reverseGeocodeAsync({latitude,longitude})
+
+                for(let item of addressResponse){
+                    setAddress(item)
+                    let currentAddress = `${item.name},${item.street}, ${item.postalCode},${item.Country}`
+                    setDisplayAddress(currentAddress)
+                    return;
+                }
+            } else{
+            //    Mensaje que algo fue mal obteniendo ubicacion
+            }
+        })
+    }, []) 
 
     return (
         <View style={styles.container}>
@@ -16,7 +53,7 @@ export const LandingScreen = () => {
                     <Text style={styles.addressTitle}>Tu Dirección de Entrega</Text>
                 </View>
 
-                <Text style={styles.addressText}>Colonia El Higo, Siguatepeque, Comayagua</Text>
+                <Text style={styles.addressText}>{displayAddress}</Text>
             </View>
             <View style={styles.footer}/>
         </View>
