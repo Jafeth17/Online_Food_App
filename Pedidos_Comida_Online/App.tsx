@@ -1,6 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
+<<<<<<< HEAD
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { LandingScreen } from './src/screens/LandingScreen';
+=======
+import { StyleSheet, Text, View } from 'react-native';
+>>>>>>> parent of b6e1fce (Landing page diseno)
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -78,7 +82,14 @@ const AppNavigation = createAppContainer(switchNavigator);
 
 export default function App() {
   return (
+<<<<<<< HEAD
     < AppNavigation />
+=======
+    <View style={styles.container}>
+      <Text>Open up App.tsx to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+>>>>>>> parent of b6e1fce (Landing page diseno)
   );
 }
 

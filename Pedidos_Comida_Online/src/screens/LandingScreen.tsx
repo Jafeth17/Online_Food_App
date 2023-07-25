@@ -1,10 +1,13 @@
 import React, {useState,useReducer, useEffect} from 'react';
 import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
 
+<<<<<<< HEAD
 import * as Location from 'expo-location'
 
 const screenWidth = Dimensions.get('screen').width
 
+=======
+>>>>>>> parent of b6e1fce (Landing page diseno)
 export const LandingScreen = () => {
 
     const [errorMsg, setErrorMsg] = useState("")
@@ -43,6 +46,7 @@ export const LandingScreen = () => {
     }, []) 
 
     return (
+<<<<<<< HEAD
         <View style={styles.container}>
             <View style={styles.navigation}>
                 
@@ -56,6 +60,10 @@ export const LandingScreen = () => {
                 <Text style={styles.addressText}>{displayAddress}</Text>
             </View>
             <View style={styles.footer}/>
+=======
+        <View>
+            <Text> Pagina Inicio </Text>
+>>>>>>> parent of b6e1fce (Landing page diseno)
         </View>
     )
     
@@ -65,39 +73,6 @@ const styles = StyleSheet.create({
 
     container: {
         flex:1,
-        backgroundColor: 'rgba(242,242,242,1)'
+        backgroundColor: 'green'
     },
-    navigation: {
-        flex: 2,
-    },
-    body: {
-        flex: 9,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    deliveryIcon: {
-        width: 120,
-        height: 120
-    },
-    addressContainer: {
-        width: screenWidth - 100,
-        borderBottomColor: 'red',
-        borderBottomWidth: 0.5,
-        padding: 5,
-        marginBottom: 10,
-        alignItems: 'center',
-    },
-    addressTitle:{
-        fontSize: 24,
-        fontWeight: '700',
-        color: '#7D7D7D'
-    },
-    addressText: {
-        fontSize: 20,
-        fontWeight: '200',
-        color: '#7D7D7D'
-    },
-    footer:{
-        flex: 1,
-    }
 })
