@@ -9,7 +9,7 @@ import { HomeScreen } from './src/screens/HomeScreen';
 
 const switchNavigator = createSwitchNavigator({
 
-  /*landingStack: {
+  landingStack: {
     screen: createStackNavigator({
       Landing: LandingScreen,
     },{
@@ -17,7 +17,7 @@ const switchNavigator = createSwitchNavigator({
         headerShown: false
       }
     })
-  },*/
+  },
 
   homeStack: createBottomTabNavigator({
     //Home
